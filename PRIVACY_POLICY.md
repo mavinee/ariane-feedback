@@ -35,6 +35,7 @@ All session data and configuration keys are stored locally using `chrome.storage
 
 ### 6. Contact Information
 If you have any questions regarding this Privacy Policy, you can contact us by email at [ariane.extension@gmail.com](mailto:ariane.extension@gmail.com).
+You can open an issue here : https://mavinee.github.io/ariane-feedback/
 
 ---
 
@@ -67,3 +68,4 @@ Toutes les données de session et clés de configuration sont stockées localeme
 
 ### 6. Contact
 Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter par e-mail à l'adresse suivante : [ariane.extension@gmail.com](mailto:ariane.extension@gmail.com).
+Vous pouvez également créer une nouvelle demande sur : https://mavinee.github.io/ariane-feedback/
