@@ -11,13 +11,13 @@ Ariane is a premium Chrome extension designed to eliminate context-switching fat
 ## ✨ Key Features
 
 *   **🥶 Session Freeze & "Future Self" Notes:** Close a group of active tabs to clean up your workspace and write a quick context note. Ariane remembers it all.
-*   **📸 Live Snapshots:** Capture your current workspace layout, scroll positions, and clipboard hints on the fly without closing your tabs.
+*   **📸 Live Snapshots:** Capture your current workspace layout and scroll positions on the fly without closing your tabs.
 *   **🧠 AI-Powered Briefings (Multi-Model):** When restoring a session, get an instant summary of what you were doing and a suggestion for your next step. Powered by:
     *   **Gemini Nano** (100% local, built-in Chrome AI)
     *   **LM Studio** (local server compatibility)
     *   **Gemini API** (direct cloud connection via your own API key)
 *   **🔊 Audio TTS Briefing:** Listen to your session summary read aloud to ease cognitive load upon resuming.
-*   **🔒 Privacy-First Design:** 100% of your session data, notes, and local AI processing stay on your machine. No tracking, no external databases.
+*   **🔒 Privacy-First Design:** Your sessions and notes stay on your machine. Local AI (Gemini Nano / LM Studio) runs 100% on-device. The optional cloud AI connects directly to Google with *your own* API key — never through our servers. No tracking, no external databases.
 
 ---
 
@@ -25,7 +25,7 @@ Ariane is a premium Chrome extension designed to eliminate context-switching fat
 Ariane captures the essential context of your pages:
 1.  **URL & Tab Layout** (including tab groups)
 2.  **Scroll Position** (reopens pages exactly where you were reading)
-3.  **Clipboard Hint** (captures relevant text context with your permission)
+3.  **Clipboard Hint** (optional — **disabled by default**; captured only if you explicitly enable it in the settings)
 4.  **AI Summary** (reminds you of your train of thought)
 
 ---
