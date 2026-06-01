@@ -15,7 +15,7 @@ Ariane is a productivity tool designed to save and restore your "flow state" (ac
 To function, Ariane requires specific Chrome permissions. All data gathered by these permissions is stored strictly on your local machine and is never transmitted to us or any third party (except directly to your chosen AI provider, as detailed in Section 3).
 
 *   **Tabs & TabGroups (`tabs`, `tabGroups`, `activeTab`):** Used solely to detect your open tabs, group layouts, and titles in order to save your workspace, restore it later, and generate the AI briefing.
-*   **Clipboard Read (`clipboardRead`):** Used to capture the text currently stored in your clipboard *only* when you explicitly save a session (Freeze or Snapshot). This content is used to provide the AI with context about what you were doing. **No background clipboard monitoring is performed.**
+*   **Clipboard Read (`clipboardRead`):** **Disabled by default — strictly opt-in.** Clipboard capture only happens if you explicitly enable it in the settings ("Confidentialité" section). When enabled, the text currently in your clipboard is captured *only* at the moment you save a session (Freeze or Snapshot), to provide the AI with context about what you were doing. When the option is disabled, no clipboard data is ever read. **No background clipboard monitoring is performed in any case.**
 *   **Local Storage (`storage`, `unlimitedStorage`):** Used to persist saved sessions, user notes, settings, and base64-encoded visual thumbnails of your active tab on your local machine.
 *   **Scripting (`scripting`):** Used to inject local scripts to restore your scroll positions on reopened tabs and display a brief capture confirmation overlay.
 
@@ -23,7 +23,7 @@ To function, Ariane requires specific Chrome permissions. All data gathered by t
 Ariane leverages AI models to generate session summaries. Depending on your configuration in the settings console, data processing is handled as follows:
 *   **Gemini Nano (Local - Default/Auto):** Processing occurs 100% on your device. No data leaves your machine.
 *   **LM Studio (Local):** Requests are sent locally to your self-hosted API endpoint. No data leaves your machine.
-*   **Gemini API (Cloud):** Your note, tab titles, tab excerpts, and clipboard hint are sent directly to Google APIs over a secure HTTPS connection. This data is handled in accordance with Google's API Terms of Service and is not used to train Google models (for paid/developer keys). **No third-party server acts as a proxy; the connection is direct from your browser to Google.**
+*   **Gemini API (Cloud):** Your note, tab titles, tab excerpts, and — *only if clipboard capture is enabled* — your clipboard hint are sent directly to Google APIs over a secure HTTPS connection. Your API key is transmitted via the `x-goog-api-key` HTTP header (not in the request URL). This data is handled in accordance with Google's API Terms of Service and is not used to train Google models (for paid/developer keys). **No third-party server acts as a proxy; the connection is direct from your browser to Google.**
 
 ### 4. Data Sharing and Disclosure
 We do not share, sell, or trade your data with third parties. We do not use trackers, analytics tools, or telemetry.
@@ -35,7 +35,6 @@ All session data and configuration keys are stored locally using `chrome.storage
 
 ### 6. Contact Information
 If you have any questions regarding this Privacy Policy, you can contact us by email at [ariane.extension@gmail.com](mailto:ariane.extension@gmail.com).
-You can open an issue here : https://mavinee.github.io/ariane-feedback/
 
 ---
 
@@ -48,7 +47,7 @@ Ariane est un outil de productivité conçu pour sauvegarder et restaurer votre 
 Pour fonctionner, Ariane nécessite des permissions Chrome spécifiques. Toutes les données collectées par ces permissions sont stockées exclusivement sur votre machine locale et ne nous sont jamais transmises (sauf directement à votre fournisseur d'IA sélectionné, voir Section 3).
 
 *   **Onglets et Groupes d'onglets (`tabs`, `tabGroups`, `activeTab`) :** Utilisé uniquement pour détecter vos onglets ouverts, la mise en page de vos groupes et leurs titres afin de sauvegarder votre espace de travail, le restaurer ultérieurement et générer le résumé de session.
-*   **Lecture du Presse-papiers (`clipboardRead`) :** Utilisé pour capturer le texte actuellement stocké dans votre presse-papiers *uniquement* lorsque vous sauvegardez volontairement une session (Freeze ou Snapshot). Ce contenu permet d'alimenter l'IA sur votre contexte de travail. **Aucune surveillance du presse-papiers en arrière-plan n'est effectuée.**
+*   **Lecture du Presse-papiers (`clipboardRead`) :** **Désactivée par défaut — strictement optionnelle (opt-in).** La capture du presse-papiers n'a lieu que si vous l'activez explicitement dans les réglages (section « Confidentialité »). Lorsqu'elle est activée, le texte présent dans votre presse-papiers est capturé *uniquement* au moment où vous sauvegardez une session (Freeze ou Snapshot), afin d'alimenter l'IA sur votre contexte de travail. Lorsque l'option est désactivée, aucune donnée du presse-papiers n'est lue. **Aucune surveillance du presse-papiers en arrière-plan n'est effectuée, dans tous les cas.**
 *   **Stockage Local (`storage`, `unlimitedStorage`) :** Utilisé pour conserver vos sessions sauvegardées, vos notes utilisateur, vos réglages et des miniatures visuelles (base64) de votre onglet actif sur votre machine.
 *   **Scripting (`scripting`) :** Utilisé pour injecter des scripts locaux afin de restaurer la position de défilement (scroll) lors de la réouverture des onglets et afficher une animation de confirmation de capture.
 
@@ -56,7 +55,7 @@ Pour fonctionner, Ariane nécessite des permissions Chrome spécifiques. Toutes 
 Ariane utilise des modèles d'IA pour générer les résumés de session. Selon votre configuration dans la console des réglages, le traitement s'effectue comme suit :
 *   **Gemini Nano (Local - Par défaut/Auto) :** Le traitement a lieu à 100% sur votre appareil. Aucune donnée ne quitte votre machine.
 *   **LM Studio (Local) :** Les requêtes sont envoyées localement vers votre serveur d'API personnel. Aucune donnée ne quitte votre machine.
-*   **API Gemini (Cloud) :** Votre note, les titres et extraits d'onglets, ainsi que le contenu de votre presse-papiers sont envoyés directement aux API Google via une connexion sécurisée (HTTPS). Ces données sont traitées conformément aux conditions d'utilisation de l'API de Google et ne sont pas utilisées pour entraîner les modèles de Google (pour les clés API développeurs). **Aucun serveur intermédiaire n'est utilisé ; la connexion est directe de votre navigateur vers Google.**
+*   **API Gemini (Cloud) :** Votre note, les titres et extraits d'onglets, ainsi que — *uniquement si la capture du presse-papiers est activée* — le contenu de votre presse-papiers, sont envoyés directement aux API Google via une connexion sécurisée (HTTPS). Votre clé API est transmise via l'en-tête HTTP `x-goog-api-key` (et non dans l'URL de la requête). Ces données sont traitées conformément aux conditions d'utilisation de l'API de Google et ne sont pas utilisées pour entraîner les modèles de Google (pour les clés API développeurs). **Aucun serveur intermédiaire n'est utilisé ; la connexion est directe de votre navigateur vers Google.**
 
 ### 4. Partage et Divulgation des Données
 Nous ne partageons, ne vendons et n'échangeons pas vos données avec des tiers. Nous n'utilisons aucun outil de tracking, d'analyse ou de télémétrie.
@@ -68,4 +67,3 @@ Toutes les données de session et clés de configuration sont stockées localeme
 
 ### 6. Contact
 Pour toute question concernant cette politique de confidentialité, vous pouvez nous contacter par e-mail à l'adresse suivante : [ariane.extension@gmail.com](mailto:ariane.extension@gmail.com).
-Vous pouvez également créer une nouvelle demande sur : https://mavinee.github.io/ariane-feedback/
